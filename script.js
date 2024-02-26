@@ -91,13 +91,24 @@ function generateHaki() {
     }
 }
 
-function generateWillOfD() {
-    const randomChance = Math.random(); // Générer un nombre aléatoire entre 0 et 1
-    const willOfDResult = randomChance <= 0.1 ? "Oui" : "Non";
+let willOfDGenerated = false; // Variable pour suivre si la volonté du D a déjà été générée
 
-    // Afficher le résultat
-    const willOfDDiv = document.getElementById('will-of-d');
-    willOfDDiv.innerText = `Volonté du D : ${willOfDResult}`;
+function generateWillOfD() {
+    if (!willOfDGenerated) {
+        const randomChance = Math.random(); // Générer un nombre aléatoire entre 0 et 1
+        const willOfDResult = randomChance <= 0.1 ? "Oui" : "Non";
+
+        // Afficher le résultat
+        const willOfDDiv = document.getElementById('will-of-d');
+        willOfDDiv.innerText = `Volonté du D : ${willOfDResult}`;
+
+        // Désactiver le bouton après la première utilisation
+        document.getElementById('generate-will-of-d').disabled = true;
+
+        willOfDGenerated = true;
+    } else {
+        alert("La volonté du D a déjà été générée.");
+    }
 }
 
 // Fonction pour générer le montant de la prime
