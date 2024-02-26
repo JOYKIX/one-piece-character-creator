@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>One Piece Creator</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="Logo One Piece" class="logo">
+        </header>
+        <p id="attempts-remaining"></p>
+        <label for="unlock-code">Code de déverrouillage :</label>
+        <input type="text" id="unlock-code" name="unlock-code" placeholder="Entrez le code ici">
+        <button onclick="checkUnlockCode()">Vérifier le code</button>
+
+        <section id="character-form-section">
+            <form id="character-form">
+                <div class="form-group">
+                    <label for="last-name">Nom de famille :</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="first-name">Prénom :</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Sexe :</label>
+                    <input type="radio" id="Masculin" name="gender" value="Masculin" checked>
+                    <label for="Masculin">Masculin</label>
+
+                    <input type="radio" id="Féminin" name="gender" value="Féminin">
+                    <label for="Féminin">Féminin</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="weapon">Arme :</label>
+                    <select id="weapon" name="weapon">
+                        <option value="Aucune">Aucune arme</option>
+                        <option value="Épée">Épée</option>
+                        <option value="Pistolet">Pistolet</option>
+                        <option value="Fusil">Fusil</option>
+                        <option value="Hache">Hache</option>
+                        <option value="Fouet">Fouet</option>
+                        <option value="Katana">Katana</option>
+                        <!-- Ajoutez d'autres armes de la liste... -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" onclick="generateWillOfD()">Générer la Volonté du D</button>
+                    <p id="will-of-d"></p>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" onclick="submitForm()">Créer Personnage</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="result-section">
+            <div id="result"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

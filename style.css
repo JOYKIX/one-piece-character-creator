@@ -1,0 +1,97 @@
+body {
+    background-image: url('background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    padding: 30px;
+    background-image: url('texture.jpg');
+    background-size: cover;
+    border: 2px solid #e2ccb4;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+header {
+    text-align: center; /* Ajout pour centrer le contenu dans l'en-tête */
+}
+
+.logo {
+    max-width: 75%;
+    height: auto;
+    margin: 0 auto 20px; /* Ajout de '0 auto' pour centrer horizontalement */
+    display: block; /* Pour assurer que la marge auto fonctionne correctement */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 3;
+}
+
+label {
+    font-weight: bold;
+    color: black;
+}
+
+input, select, button {
+    padding: 15px;
+    border: 1px solid #d3b28e;
+    border-radius: 8px;
+    font-size: 16px;
+    z-index: 3;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus, button:focus {
+    border-color: #e67e22;
+    box-shadow: 0 0 10px rgba(230, 126, 34, 0.5);
+}
+
+button {
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #d35400;
+}
+
+#result {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    background-color: rgba(249, 245, 225, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    z-index: 3;
+}
+
+#attempts-remaining {
+    margin-top: 20px;
+    font-size: 16px;
+    color: black;
+}
