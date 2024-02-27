@@ -15,45 +15,6 @@ const weapons = ["Épée", "Pistolet", "Fusil", "Hache", "Fouet", "Katana", /* .
 // Ajoutez ces lignes pour gérer le nombre d'essais
 const maxAttempts = 10;
 
-function updateAttemptsRemaining() {
-    const attemptsRemaining = localStorage.getItem('attemptsRemaining') || maxAttempts;
-    document.getElementById('attempts-remaining').innerText = `Nombre d'essais restants : ${attemptsRemaining}`;
-}
-
-function decrementAttempts() {
-    let attemptsRemaining = localStorage.getItem('attemptsRemaining') || maxAttempts;
-    attemptsRemaining = Math.max(0, attemptsRemaining - 1);
-    localStorage.setItem('attemptsRemaining', attemptsRemaining);
-    updateAttemptsRemaining();
-}
-
-function resetAttempts() {
-    localStorage.removeItem('attemptsRemaining');
-    updateAttemptsRemaining();
-}
-
-// Ajoutez ces lignes pour gérer le code de déverrouillage
-const unlockCode = "unlock10";
-
-function checkUnlockCode() {
-    const enteredCode = document.getElementById('unlock-code').value;
-
-    if (enteredCode === unlockCode) {
-        // Code correct, ajouter 10 essais supplémentaires
-        let attemptsRemaining = localStorage.getItem('attemptsRemaining') || maxAttempts;
-        attemptsRemaining = Math.min(maxAttempts, parseInt(attemptsRemaining) + 10);
-        localStorage.setItem('attemptsRemaining', attemptsRemaining);
-        updateAttemptsRemaining();
-
-        // Effacer le champ du code
-        document.getElementById('unlock-code').value = '';
-
-        alert("Code correct ! Vous avez gagné 10 essais supplémentaires.");
-    } else {
-        alert("Code incorrect. Veuillez réessayer.");
-    }
-}
-
 // Fonctions pour générer le Fruit du Démon, le Haki, et la Volonté du D
 function generateFruit() {
     const randomChance = Math.random(); // Générer un nombre aléatoire entre 0 et 1
@@ -119,48 +80,29 @@ function generateRandomBounty() {
 
 // Fonction pour soumettre le formulaire et générer le personnage
 function submitForm() {
-    // Récupérer le nombre d'essais restants
-    const attemptsRemaining = localStorage.getItem('attemptsRemaining') || 0;
+    // Générer les valeurs du formulaire
+    const lastName = document.getElementById('last-name').value;
+    const firstName = document.getElementById('first-name').value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
 
-    if (attemptsRemaining > 0) {
-        // Récupérer les valeurs du formulaire
-        const lastName = document.getElementById('last-name').value;
-        const firstName = document.getElementById('first-name').value;
-        const gender = document.querySelector('input[name="gender"]:checked').value;
+    // Générer la prime aléatoire
+    const bounty = generateRandomBounty();
 
-        // Récupérer les armes sélectionnées
-        const selectedWeapons = [];
-        const weaponsSelect = document.getElementById('weapon');
-        const selectedWeapon = weaponsSelect.options[weaponsSelect.selectedIndex].value;
+    // Générer le Haki
+    const haki = generateHaki();
 
-        // Générer la prime aléatoire
-        const bounty = generateRandomBounty();
+    // Générer le Fruit du Démon
+    const fruit = generateFruit();
 
-        // Générer le Haki
-        const haki = generateHaki();
+    // Vérifier si la volonté du D est présente
+    const willOfDResult = document.getElementById('will-of-d').innerText;
+    const hasWillOfD = willOfDResult.includes('Oui');
 
-        // Générer le Fruit du Démon
-        const fruit = generateFruit();
+    // Formater le message en conséquence
+    let characterMessage = `Personnage :\n${lastName} ${hasWillOfD ? 'D. ' : ''}${firstName}\nSexe : ${gender}\nArme : ${selectedWeapon}\nHaki : ${haki}\nFruit : ${fruit}\nPrime : ${bounty} B`;
 
-        // Vérifier si la volonté du D est présente
-        const willOfDResult = document.getElementById('will-of-d').innerText;
-        const hasWillOfD = willOfDResult.includes('Oui');
-
-        // Formater le message en conséquence
-        let characterMessage = `Personnage :\n${lastName} ${hasWillOfD ? 'D. ' : ''}${firstName}\nSexe : ${gender}\nArme : ${selectedWeapon}\nHaki : ${haki}\nFruit : ${fruit}\nPrime : ${bounty} B`;
-
-        // Afficher le résultat
-        const resultDiv = document.getElementById('result');
-        resultDiv.innerText = characterMessage;
-
-        // Mettre à jour le nombre d'essais restants
-        decrementAttempts();
-    } else {
-        alert("Vous n'avez plus d'essais restants.");
-    }
+    // Afficher le résultat
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerText = characterMessage;
 }
 
-// Ajoutez ces lignes pour initialiser le nombre d'essais restants lors du chargement de la page
-window.onload = function () {
-    updateAttemptsRemaining();
-};
