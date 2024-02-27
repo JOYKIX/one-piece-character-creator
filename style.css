@@ -27,14 +27,14 @@ body {
 }
 
 header {
-    text-align: center; /* Ajout pour centrer le contenu dans l'en-tête */
+    text-align: center;
 }
 
 .logo {
     max-width: 75%;
     height: auto;
-    margin: 0 auto 20px; /* Ajout de '0 auto' pour centrer horizontalement */
-    display: block; /* Pour assurer que la marge auto fonctionne correctement */
+    margin: 0 auto 20px;
+    display: block;
 }
 
 form {
@@ -47,7 +47,7 @@ form {
 
 label {
     font-weight: bold;
-    color: black;
+    color: white;
 }
 
 input, select, button {
@@ -55,6 +55,7 @@ input, select, button {
     border: 1px solid #d3b28e;
     border-radius: 8px;
     font-size: 16px;
+    color: white;
     z-index: 3;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -71,6 +72,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 18px;
+    border: 1px solid #582900; /* Contour en #582900 */
 }
 
 button:hover {
@@ -88,10 +90,11 @@ button:hover {
     position: relative;
     overflow: hidden;
     z-index: 3;
+    color: white; /* Texte en blanc */
 }
 
 #attempts-remaining {
     margin-top: 20px;
     font-size: 16px;
-    color: black;
+    color: white; /* Texte en blanc */
 }
