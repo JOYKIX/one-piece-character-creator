@@ -12,10 +12,30 @@ const logiaFruits = [
 // Liste des armes
 const weapons = ["Épée", "Pistolet", "Fusil", "Hache", "Fouet", "Katana", /* ... ajoutez d'autres armes ... */];
 
-// Ajoutez ces lignes pour gérer le nombre d'essais
-const maxAttempts = 10;
+// Fonction pour mettre à jour le nombre d'essais restants (maintenant illimité)
+function updateAttemptsRemaining() {
+    // Code pour mettre à jour le nombre d'essais restants (s'il était utilisé)
+}
 
-// Fonctions pour générer le Fruit du Démon, le Haki, et la Volonté du D
+// Fonction pour décrémenter le nombre d'essais (maintenant illimité)
+function decrementAttempts() {
+    // Code pour décrémenter le nombre d'essais (s'il était utilisé)
+    updateAttemptsRemaining();
+}
+
+// Fonction pour réinitialiser le nombre d'essais (maintenant illimité)
+function resetAttempts() {
+    // Code pour réinitialiser le nombre d'essais (s'il était utilisé)
+    updateAttemptsRemaining();
+}
+
+// Fonction pour vérifier le code de déverrouillage (maintenant illimité)
+function checkUnlockCode() {
+    // Code pour vérifier le code de déverrouillage (s'il était utilisé)
+    updateAttemptsRemaining();
+}
+
+// Fonction pour générer le Fruit du Démon
 function generateFruit() {
     const randomChance = Math.random(); // Générer un nombre aléatoire entre 0 et 1
 
@@ -36,6 +56,7 @@ function generateFruit() {
     }
 }
 
+// Fonction pour générer le Haki
 function generateHaki() {
     const randomChance = Math.random(); // Générer un nombre aléatoire entre 0 et 1
 
@@ -54,6 +75,7 @@ function generateHaki() {
 
 let willOfDGenerated = false; // Variable pour suivre si la volonté du D a déjà été générée
 
+// Fonction pour générer la Volonté du D
 function generateWillOfD() {
     if (!willOfDGenerated) {
         const randomChance = Math.random(); // Générer un nombre aléatoire entre 0 et 1
@@ -94,6 +116,9 @@ function submitForm() {
     // Générer le Fruit du Démon
     const fruit = generateFruit();
 
+    // Récupérer l'arme sélectionnée
+    const selectedWeapon = document.getElementById('weapon').value;
+
     // Vérifier si la volonté du D est présente
     const willOfDResult = document.getElementById('will-of-d').innerText;
     const hasWillOfD = willOfDResult.includes('Oui');
@@ -105,4 +130,9 @@ function submitForm() {
     const resultDiv = document.getElementById('result');
     resultDiv.innerText = characterMessage;
 }
+
+// Initialiser le nombre d'essais restants lors du chargement de la page
+window.onload = function () {
+    updateAttemptsRemaining();
+};
 
